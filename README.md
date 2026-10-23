@@ -52,6 +52,19 @@ curl -X POST http://localhost:8080/api/classify \
   -d '{"text": "I was charged twice"}'
 ```
 
+To evaluate the classifier on a dataset split, queue a run and poll it until it finishes:
+
+```bash
+curl -i -X POST http://localhost:8080/api/runs \
+  -H "Content-Type: application/json" \
+  -d '{"dataset": "support-messages-v0", "split": "test"}'
+
+curl http://localhost:8080/api/runs/<run_id>
+curl http://localhost:8080/api/runs
+```
+
+Datasets are read from `./data`, and runs are written to `./runs` as JSON files. See [src/api/README.md](src/api/README.md#evaluation-runs).
+
 Stop everything with `docker compose down`.
 
 ### Run locally

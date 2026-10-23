@@ -34,6 +34,6 @@ Clear messages were intentionally written to avoid obvious category keywords, so
 
 ### Provenance
 
-Messages drafted with AI assistance and manually reviewed and relabeled by the author following the labeling guidelines.
+Synthetic messages written for this project, labeled according to docs/labeling-guidelines.md. Borderline cases were adjudicated by the author.
 
 The messages are fictional and contain no real personal data.

@@ -5,12 +5,13 @@ namespace EvalLab.Api.Datasets;
 /// <summary>Loads labeled examples from a JSONL file (one JSON object per line).</summary>
 public static class DatasetLoader
 {
-    public static readonly IReadOnlySet<string> Labels =
-        new HashSet<string> { "technical_support", "billing", "general_inquiry", "account_management" };
+    /// <summary>The categories, in the fixed order used for per-class metrics and the confusion matrix.</summary>
+    public static readonly IReadOnlyList<string> Labels =
+        ["technical_support", "billing", "general_inquiry", "account_management"];
 
-    public static readonly IReadOnlySet<string> Splits = new HashSet<string> { "dev", "test" };
+    public static readonly IReadOnlyList<string> Splits = ["dev", "test"];
 
-    public static readonly IReadOnlySet<string> Difficulties = new HashSet<string> { "clear", "ambiguous" };
+    public static readonly IReadOnlyList<string> Difficulties = ["clear", "ambiguous"];
 
     /// <summary>
     /// Reads and validates the whole file, then returns the examples, optionally only those in <paramref name="split"/>.
@@ -132,7 +133,7 @@ public static class DatasetLoader
         return text;
     }
 
-    private static string? ReadAllowedValue(JsonElement root, string field, IReadOnlySet<string> allowed, List<string> errors)
+    private static string? ReadAllowedValue(JsonElement root, string field, IReadOnlyList<string> allowed, List<string> errors)
     {
         var value = ReadRequiredString(root, field, errors);
         if (value is not null && !allowed.Contains(value))
