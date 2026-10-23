@@ -74,6 +74,14 @@ public sealed class MetricsCalculatorTests
         Assert.Throws<ArgumentException>(() => MetricsCalculator.Calculate(pairs, Labels));
     }
 
+    [Fact]
+    public void Calculate_PredictedLabelNeitherCategoryNorInvalid_ThrowsArgumentException()
+    {
+        (string, string)[] pairs = [("billing", "billing"), ("billing", "sales")];
+
+        Assert.Throws<ArgumentException>(() => MetricsCalculator.Calculate(pairs, Labels));
+    }
+
     private static MetricsFixture LoadFixture()
     {
         var path = Path.Combine(AppContext.BaseDirectory, "Evaluation", "Fixtures", "metrics-cases.json");
