@@ -23,4 +23,9 @@
     <ProjectReference Include="..\EvalLab.Api\EvalLab.Api.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="Datasets\Fixtures\*.jsonl" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\..\data\support-messages-v0.jsonl" Link="Data\support-messages-v0.jsonl" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
 </Project>

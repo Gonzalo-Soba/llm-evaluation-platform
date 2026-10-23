@@ -1,0 +1,5 @@
+{"id": "ex-1", "text": "La app se cierra al abrirla", "label": "technical_support", "split": "dev", "difficulty": "clear"}
+{"id": "ex-2", "text": "Me cobraron dos veces", "label": "billing", "split": "test", "difficulty": "clear"}
+
+{"id": "ex-3", "text": "¿Tienen app para tablet?", "label": "general_inquiry", "split": "dev", "difficulty": "ambiguous"}
+{"id": "ex-4", "text": "Olvidé la clave", "label": "account_management", "split": "test", "difficulty": "clear"}
