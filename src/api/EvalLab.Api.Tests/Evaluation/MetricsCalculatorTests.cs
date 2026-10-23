@@ -82,6 +82,34 @@ public sealed class MetricsCalculatorTests
         Assert.Throws<ArgumentException>(() => MetricsCalculator.Calculate(pairs, Labels));
     }
 
+    [Fact]
+    public void Calculate_DuplicatedLabel_ThrowsArgumentException()
+    {
+        string[] labels = ["billing", "billing", "technical_support"];
+
+        Assert.Throws<ArgumentException>(() => MetricsCalculator.Calculate([("billing", "billing")], labels));
+    }
+
+    [Fact]
+    public void Calculate_LabelsContainInvalid_ThrowsArgumentException()
+    {
+        string[] labels = ["billing", MetricsCalculator.InvalidLabel];
+
+        Assert.Throws<ArgumentException>(() => MetricsCalculator.Calculate([("billing", "billing")], labels));
+    }
+
+    [Fact]
+    public void Calculate_NullPairs_ThrowsArgumentNullException()
+    {
+        Assert.Throws<ArgumentNullException>(() => MetricsCalculator.Calculate(null!, Labels));
+    }
+
+    [Fact]
+    public void Calculate_NullLabels_ThrowsArgumentNullException()
+    {
+        Assert.Throws<ArgumentNullException>(() => MetricsCalculator.Calculate([("billing", "billing")], null!));
+    }
+
     private static MetricsFixture LoadFixture()
     {
         var path = Path.Combine(AppContext.BaseDirectory, "Evaluation", "Fixtures", "metrics-cases.json");
