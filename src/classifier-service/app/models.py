@@ -1,7 +1,9 @@
 from enum import StrEnum
 from typing import Annotated, Literal
 
-from pydantic import BaseModel, Field, StringConstraints
+from pydantic import BaseModel, Field, StringConstraints, field_validator
+
+from app.prompts import prompt_exists
 
 
 class Category(StrEnum):
@@ -14,10 +16,19 @@ class Category(StrEnum):
 
 
 class ClassifierConfig(BaseModel):
-    provider: Literal["mock"]
+    provider: Literal["mock", "openai_compatible"]
+    # Overrides LLM_MODEL for the openai_compatible provider.
     model: str | None = None
+    # A file in prompts/, e.g. "v1". Null means the default prompt (v1).
     prompt_version: str | None = None
     temperature: float = Field(default=0.0, ge=0.0, le=2.0)
+
+    @field_validator("prompt_version")
+    @classmethod
+    def prompt_version_must_exist(cls, value: str | None) -> str | None:
+        if value is not None and not prompt_exists(value):
+            raise ValueError("must match ^v[0-9]+$ and name an existing prompt file")
+        return value
 
 
 class ClassifyRequest(BaseModel):
