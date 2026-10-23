@@ -1,0 +1,367 @@
+{
+  "run_id": "8475e6a7-5ffc-4b57-8fba-1de29aec5820",
+  "status": "completed",
+  "created_at": "2026-10-23T18:14:49.350254+00:00",
+  "started_at": "2026-10-23T18:14:49.4236148+00:00",
+  "completed_at": "2026-10-23T18:15:05.0062255+00:00",
+  "dataset_name": "support-messages-v0",
+  "dataset_sha256": "2ded4ddcf860187f7e1fe5117a44182902027ab73b7383f9953f9218c8059619",
+  "split": "dev",
+  "classifier_config": {
+    "provider": "openai_compatible",
+    "model": "openai/gpt-oss-120b",
+    "prompt_version": "v1",
+    "temperature": 0
+  },
+  "predictions": [
+    {
+      "example_id": "msg-002",
+      "text": "El buscador no encuentra nada. Pongo el nombre exacto de un cliente que s\u00E9 que est\u00E1 cargado y me dice \u0027sin resultados\u0027.",
+      "expected": "technical_support",
+      "predicted": "technical_support",
+      "status": "ok",
+      "raw_output": "{\u0022category\u0022:\u0022technical_support\u0022}",
+      "classifier_latency_ms": 718,
+      "end_to_end_latency_ms": 772,
+      "input_tokens": 616,
+      "output_tokens": 76,
+      "error_message": null
+    },
+    {
+      "example_id": "msg-004",
+      "text": "Me cobraron dos veces la cuota de este mes, me figura en el resumen de la tarjeta. Quiero que me devuelvan una.",
+      "expected": "billing",
+      "predicted": "billing",
+      "status": "ok",
+      "raw_output": "{\u0022category\u0022:\u0022billing\u0022}",
+      "classifier_latency_ms": 1778,
+      "end_to_end_latency_ms": 1789,
+      "input_tokens": 616,
+      "output_tokens": 76,
+      "error_message": null
+    },
+    {
+      "example_id": "msg-006",
+      "text": "Me lleg\u00F3 un d\u00E9bito de USD 49 y yo tengo el plan de 29. Qu\u00E9 pas\u00F3?",
+      "expected": "billing",
+      "predicted": "billing",
+      "status": "ok",
+      "raw_output": "{\u0022category\u0022:\u0022billing\u0022}",
+      "classifier_latency_ms": 644,
+      "end_to_end_latency_ms": 656,
+      "input_tokens": 608,
+      "output_tokens": 63,
+      "error_message": null
+    },
+    {
+      "example_id": "msg-007",
+      "text": "Olvid\u00E9 la contrase\u00F1a y el mail para recuperarla no me llega, ya revis\u00E9 en spam.",
+      "expected": "account_management",
+      "predicted": "account_management",
+      "status": "ok",
+      "raw_output": "{\u0022category\u0022:\u0022account_management\u0022}",
+      "classifier_latency_ms": 824,
+      "end_to_end_latency_ms": 835,
+      "input_tokens": 608,
+      "output_tokens": 66,
+      "error_message": null
+    },
+    {
+      "example_id": "msg-008",
+      "text": "No me deja entrar, me sale que la cuenta est\u00E1 suspendida. Creo que es porque el otro d\u00EDa me rechazaron la tarjeta",
+      "expected": "billing",
+      "predicted": "billing",
+      "status": "ok",
+      "raw_output": "{\u0022category\u0022:\u0022billing\u0022}",
+      "classifier_latency_ms": 670,
+      "end_to_end_latency_ms": 687,
+      "input_tokens": 613,
+      "output_tokens": 143,
+      "error_message": null
+    },
+    {
+      "example_id": "msg-009",
+      "text": "C\u00F3mo hago para que el reporte se mande solo todos los lunes? Busqu\u00E9 en la configuraci\u00F3n y no lo encontr\u00E9.",
+      "expected": "general_inquiry",
+      "predicted": "general_inquiry",
+      "status": "ok",
+      "raw_output": "{\u0022category\u0022:\u0022general_inquiry\u0022}",
+      "classifier_latency_ms": 556,
+      "end_to_end_latency_ms": 567,
+      "input_tokens": 611,
+      "output_tokens": 122,
+      "error_message": null
+    },
+    {
+      "example_id": "msg-011",
+      "text": "Hola! Quer\u00EDa saber si tienen alg\u00FAn descuento para ONGs \uD83D\uDE42",
+      "expected": "general_inquiry",
+      "predicted": "general_inquiry",
+      "status": "ok",
+      "raw_output": "{\u0022category\u0022:\u0022general_inquiry\u0022}",
+      "classifier_latency_ms": 629,
+      "end_to_end_latency_ms": 640,
+      "input_tokens": 600,
+      "output_tokens": 118,
+      "error_message": null
+    },
+    {
+      "example_id": "msg-015",
+      "text": "Le doy al bot\u00F3n de descargar la factura y no pasa nada, prob\u00E9 en Chrome y en Firefox y es lo mismo",
+      "expected": "technical_support",
+      "predicted": "technical_support",
+      "status": "ok",
+      "raw_output": "{\u0022category\u0022:\u0022technical_support\u0022}",
+      "classifier_latency_ms": 716,
+      "end_to_end_latency_ms": 729,
+      "input_tokens": 611,
+      "output_tokens": 152,
+      "error_message": null
+    },
+    {
+      "example_id": "msg-017",
+      "text": "Desde ayer la app se me queda trabada en la pantalla de carga y no pasa de ah\u00ED. Ya la desinstal\u00E9 y la volv\u00ED a instalar y nada.",
+      "expected": "technical_support",
+      "predicted": "technical_support",
+      "status": "ok",
+      "raw_output": "{\u0022category\u0022:\u0022technical_support\u0022}",
+      "classifier_latency_ms": 505,
+      "end_to_end_latency_ms": 541,
+      "input_tokens": 622,
+      "output_tokens": 69,
+      "error_message": null
+    },
+    {
+      "example_id": "msg-018",
+      "text": "Necesito resetear la clave, no me acuerdo cu\u00E1l puse. Y de paso, tienen app para tablet?",
+      "expected": "account_management",
+      "predicted": "account_management",
+      "status": "ok",
+      "raw_output": "{\u0022category\u0022:\u0022account_management\u0022}",
+      "classifier_latency_ms": 745,
+      "end_to_end_latency_ms": 756,
+      "input_tokens": 609,
+      "output_tokens": 119,
+      "error_message": null
+    },
+    {
+      "example_id": "msg-019",
+      "text": "Se puede usar la app sin conexi\u00F3n a internet? Viajo mucho al interior y a veces no tengo se\u00F1al",
+      "expected": "general_inquiry",
+      "predicted": "general_inquiry",
+      "status": "ok",
+      "raw_output": "{\u0022category\u0022:\u0022general_inquiry\u0022}",
+      "classifier_latency_ms": 929,
+      "end_to_end_latency_ms": 941,
+      "input_tokens": 608,
+      "output_tokens": 90,
+      "error_message": null
+    },
+    {
+      "example_id": "msg-020",
+      "text": "Perd\u00ED el celular y ten\u00EDa la verificaci\u00F3n en dos pasos ah\u00ED, ahora no puedo entrar de ninguna forma",
+      "expected": "account_management",
+      "predicted": "account_management",
+      "status": "ok",
+      "raw_output": "{\u0022category\u0022:\u0022account_management\u0022}",
+      "classifier_latency_ms": 588,
+      "end_to_end_latency_ms": 601,
+      "input_tokens": 609,
+      "output_tokens": 111,
+      "error_message": null
+    },
+    {
+      "example_id": "msg-026",
+      "text": "Cuando quiero iniciar sesi\u00F3n desde la compu me queda la pantalla en blanco. Desde el celu entro sin problema.",
+      "expected": "technical_support",
+      "predicted": "technical_support",
+      "status": "ok",
+      "raw_output": "{\u0022category\u0022:\u0022technical_support\u0022}",
+      "classifier_latency_ms": 991,
+      "end_to_end_latency_ms": 1019,
+      "input_tokens": 609,
+      "output_tokens": 153,
+      "error_message": null
+    },
+    {
+      "example_id": "msg-029",
+      "text": "Hay forma de que varios usuarios usen la misma cuenta a la vez o cada uno necesita la suya?",
+      "expected": "general_inquiry",
+      "predicted": "general_inquiry",
+      "status": "ok",
+      "raw_output": "{\u0022category\u0022: \u0022general_inquiry\u0022}",
+      "classifier_latency_ms": 1036,
+      "end_to_end_latency_ms": 1059,
+      "input_tokens": 609,
+      "output_tokens": 115,
+      "error_message": null
+    },
+    {
+      "example_id": "msg-030",
+      "text": "Me pueden cambiar el nombre de usuario? Lo escrib\u00ED mal cuando me registr\u00E9",
+      "expected": "account_management",
+      "predicted": "account_management",
+      "status": "ok",
+      "raw_output": "{\u0022category\u0022:\u0022account_management\u0022}",
+      "classifier_latency_ms": 463,
+      "end_to_end_latency_ms": 474,
+      "input_tokens": 603,
+      "output_tokens": 62,
+      "error_message": null
+    },
+    {
+      "example_id": "msg-031",
+      "text": "hola, les escribo xq hace una semana dejaron de llegarme las notificaciones al celu. Las tengo activadas, ya me fij\u00E9",
+      "expected": "technical_support",
+      "predicted": "technical_support",
+      "status": "ok",
+      "raw_output": "{\u0022category\u0022:\u0022technical_support\u0022}",
+      "classifier_latency_ms": 877,
+      "end_to_end_latency_ms": 892,
+      "input_tokens": 616,
+      "output_tokens": 64,
+      "error_message": null
+    },
+    {
+      "example_id": "msg-036",
+      "text": "Necesito que le den permisos de administrador a mi socio. Yo no tengo la opci\u00F3n para cambi\u00E1rselos.",
+      "expected": "account_management",
+      "predicted": "account_management",
+      "status": "ok",
+      "raw_output": "{\u0022category\u0022:\u0022account_management\u0022}",
+      "classifier_latency_ms": 615,
+      "end_to_end_latency_ms": 634,
+      "input_tokens": 610,
+      "output_tokens": 82,
+      "error_message": null
+    },
+    {
+      "example_id": "msg-037",
+      "text": "Tienen integraci\u00F3n con Mercado Libre o est\u00E1 en los planes?",
+      "expected": "general_inquiry",
+      "predicted": "general_inquiry",
+      "status": "ok",
+      "raw_output": "{\u0022category\u0022:\u0022general_inquiry\u0022}",
+      "classifier_latency_ms": 629,
+      "end_to_end_latency_ms": 649,
+      "input_tokens": 599,
+      "output_tokens": 92,
+      "error_message": null
+    },
+    {
+      "example_id": "msg-038",
+      "text": "Como hago para cambiar la tarjeta con la que pago? La que tengo se vence el mes que viene.",
+      "expected": "billing",
+      "predicted": "billing",
+      "status": "ok",
+      "raw_output": "{\u0022category\u0022:\u0022billing\u0022}",
+      "classifier_latency_ms": 473,
+      "end_to_end_latency_ms": 484,
+      "input_tokens": 608,
+      "output_tokens": 54,
+      "error_message": null
+    },
+    {
+      "example_id": "msg-040",
+      "text": "Che, me siguen debitando todos los meses y yo di de baja el servicio en diciembre. Es la tercera vez que escribo.",
+      "expected": "billing",
+      "predicted": "billing",
+      "status": "ok",
+      "raw_output": "{\u0022category\u0022:\u0022billing\u0022}",
+      "classifier_latency_ms": 779,
+      "end_to_end_latency_ms": 789,
+      "input_tokens": 614,
+      "output_tokens": 93,
+      "error_message": null
+    }
+  ],
+  "metrics": {
+    "accuracy": 1,
+    "invalid_count": 0,
+    "per_class": [
+      {
+        "label": "technical_support",
+        "precision": 1,
+        "recall": 1,
+        "f1": 1,
+        "support": 5
+      },
+      {
+        "label": "billing",
+        "precision": 1,
+        "recall": 1,
+        "f1": 1,
+        "support": 5
+      },
+      {
+        "label": "general_inquiry",
+        "precision": 1,
+        "recall": 1,
+        "f1": 1,
+        "support": 5
+      },
+      {
+        "label": "account_management",
+        "precision": 1,
+        "recall": 1,
+        "f1": 1,
+        "support": 5
+      }
+    ],
+    "macro_precision": 1,
+    "macro_recall": 1,
+    "macro_f1": 1,
+    "weighted_precision": 1,
+    "weighted_recall": 1,
+    "weighted_f1": 1,
+    "confusion_matrix": {
+      "rows": [
+        "technical_support",
+        "billing",
+        "general_inquiry",
+        "account_management"
+      ],
+      "columns": [
+        "technical_support",
+        "billing",
+        "general_inquiry",
+        "account_management",
+        "invalid"
+      ],
+      "counts": [
+        [
+          5,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          5,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          5,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          5,
+          0
+        ]
+      ]
+    }
+  },
+  "error_count": 0,
+  "total_input_tokens": 12199,
+  "total_output_tokens": 1920,
+  "failure_reason": null
+}
