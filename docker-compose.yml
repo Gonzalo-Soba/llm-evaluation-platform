@@ -1,0 +1,21 @@
+services:
+  api:
+    build: ./src/api
+    ports:
+      - "8080:8080"
+    environment:
+      CLASSIFIER_SERVICE_URL: http://classifier-service:8000
+    depends_on:
+      classifier-service:
+        condition: service_healthy
+
+  # Not published to the host: only reachable by other services in the compose network.
+  classifier-service:
+    build: ./src/classifier-service
+    healthcheck:
+      # The slim image has no curl; urlopen raises (non-zero exit) on connection errors and non-2xx responses.
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health', timeout=2)"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+      start_period: 5s

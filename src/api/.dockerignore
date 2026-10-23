@@ -1,0 +1,19 @@
+# Build outputs
+**/bin/
+**/obj/
+
+# Tests are not part of the runtime image
+EvalLab.Api.Tests/
+
+# IDE and user files
+.vs/
+.vscode/
+*.user
+
+# Secrets
+.env
+.env.*
+
+# Docker files
+Dockerfile
+.dockerignore

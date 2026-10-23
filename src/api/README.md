@@ -42,6 +42,10 @@ curl -X POST http://localhost:5146/api/classify \
 
 `config` is optional. If it is missing, `{"provider": "mock"}` is sent to the classifier service.
 
+## Docker
+
+The image is a multi-stage build: the SDK image publishes the API, and the ASP.NET runtime image runs it as a non-root user on port 8080. To run it together with the classifier service, use `docker compose up --build` from the repository root (see the root README).
+
 ## Test
 
 ```bash
