@@ -1,3 +1,4 @@
+name: ai-evaluation-lab
 services:
   api:
     build: ./src/api
