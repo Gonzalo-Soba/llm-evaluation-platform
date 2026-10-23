@@ -1,0 +1,698 @@
+{
+  "generated_by": "scripts/generate_metrics_fixtures.py",
+  "scikit_learn_version": "1.9.1",
+  "labels": [
+    "technical_support",
+    "billing",
+    "general_inquiry",
+    "account_management"
+  ],
+  "cases": [
+    {
+      "name": "perfect_predictions",
+      "description": "Every prediction matches the expected label.",
+      "expected": [
+        "technical_support",
+        "technical_support",
+        "billing",
+        "billing",
+        "general_inquiry",
+        "general_inquiry",
+        "account_management",
+        "account_management"
+      ],
+      "predicted": [
+        "technical_support",
+        "technical_support",
+        "billing",
+        "billing",
+        "general_inquiry",
+        "general_inquiry",
+        "account_management",
+        "account_management"
+      ],
+      "accuracy": 1.0,
+      "invalid_count": 0,
+      "per_class": [
+        {
+          "label": "technical_support",
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 2
+        },
+        {
+          "label": "billing",
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 2
+        },
+        {
+          "label": "general_inquiry",
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 2
+        },
+        {
+          "label": "account_management",
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 2
+        }
+      ],
+      "macro": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "weighted": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "confusion_matrix": {
+        "rows": [
+          "technical_support",
+          "billing",
+          "general_inquiry",
+          "account_management"
+        ],
+        "columns": [
+          "technical_support",
+          "billing",
+          "general_inquiry",
+          "account_management",
+          "invalid"
+        ],
+        "counts": [
+          [
+            2,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "name": "all_wrong",
+      "description": "Every prediction is a valid category, but never the expected one.",
+      "expected": [
+        "technical_support",
+        "technical_support",
+        "billing",
+        "billing",
+        "general_inquiry",
+        "general_inquiry",
+        "account_management",
+        "account_management"
+      ],
+      "predicted": [
+        "billing",
+        "general_inquiry",
+        "general_inquiry",
+        "account_management",
+        "account_management",
+        "technical_support",
+        "technical_support",
+        "billing"
+      ],
+      "accuracy": 0.0,
+      "invalid_count": 0,
+      "per_class": [
+        {
+          "label": "technical_support",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 2
+        },
+        {
+          "label": "billing",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 2
+        },
+        {
+          "label": "general_inquiry",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 2
+        },
+        {
+          "label": "account_management",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 2
+        }
+      ],
+      "macro": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "weighted": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "confusion_matrix": {
+        "rows": [
+          "technical_support",
+          "billing",
+          "general_inquiry",
+          "account_management"
+        ],
+        "columns": [
+          "technical_support",
+          "billing",
+          "general_inquiry",
+          "account_management",
+          "invalid"
+        ],
+        "counts": [
+          [
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "name": "imbalanced_classes",
+      "description": "Billing dominates the expected labels; the other classes have few examples.",
+      "expected": [
+        "billing",
+        "billing",
+        "billing",
+        "billing",
+        "billing",
+        "billing",
+        "billing",
+        "billing",
+        "billing",
+        "billing",
+        "technical_support",
+        "technical_support",
+        "technical_support",
+        "account_management",
+        "account_management",
+        "general_inquiry"
+      ],
+      "predicted": [
+        "billing",
+        "billing",
+        "billing",
+        "billing",
+        "billing",
+        "billing",
+        "billing",
+        "technical_support",
+        "account_management",
+        "general_inquiry",
+        "technical_support",
+        "technical_support",
+        "billing",
+        "account_management",
+        "billing",
+        "general_inquiry"
+      ],
+      "accuracy": 0.6875,
+      "invalid_count": 0,
+      "per_class": [
+        {
+          "label": "technical_support",
+          "precision": 0.6666666666666666,
+          "recall": 0.6666666666666666,
+          "f1": 0.6666666666666666,
+          "support": 3
+        },
+        {
+          "label": "billing",
+          "precision": 0.7777777777777778,
+          "recall": 0.7,
+          "f1": 0.7368421052631579,
+          "support": 10
+        },
+        {
+          "label": "general_inquiry",
+          "precision": 0.5,
+          "recall": 1.0,
+          "f1": 0.6666666666666666,
+          "support": 1
+        },
+        {
+          "label": "account_management",
+          "precision": 0.5,
+          "recall": 0.5,
+          "f1": 0.5,
+          "support": 2
+        }
+      ],
+      "macro": {
+        "precision": 0.6111111111111112,
+        "recall": 0.7166666666666667,
+        "f1": 0.6425438596491228
+      },
+      "weighted": {
+        "precision": 0.7048611111111112,
+        "recall": 0.6875,
+        "f1": 0.6896929824561403
+      },
+      "confusion_matrix": {
+        "rows": [
+          "technical_support",
+          "billing",
+          "general_inquiry",
+          "account_management"
+        ],
+        "columns": [
+          "technical_support",
+          "billing",
+          "general_inquiry",
+          "account_management",
+          "invalid"
+        ],
+        "counts": [
+          [
+            2,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            7,
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            1,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "name": "class_never_predicted",
+      "description": "general_inquiry appears in the expected labels but is never predicted.",
+      "expected": [
+        "technical_support",
+        "technical_support",
+        "billing",
+        "billing",
+        "general_inquiry",
+        "general_inquiry",
+        "general_inquiry",
+        "account_management",
+        "account_management"
+      ],
+      "predicted": [
+        "technical_support",
+        "technical_support",
+        "billing",
+        "technical_support",
+        "billing",
+        "account_management",
+        "technical_support",
+        "account_management",
+        "account_management"
+      ],
+      "accuracy": 0.5555555555555556,
+      "invalid_count": 0,
+      "per_class": [
+        {
+          "label": "technical_support",
+          "precision": 0.5,
+          "recall": 1.0,
+          "f1": 0.6666666666666666,
+          "support": 2
+        },
+        {
+          "label": "billing",
+          "precision": 0.5,
+          "recall": 0.5,
+          "f1": 0.5,
+          "support": 2
+        },
+        {
+          "label": "general_inquiry",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 3
+        },
+        {
+          "label": "account_management",
+          "precision": 0.6666666666666666,
+          "recall": 1.0,
+          "f1": 0.8,
+          "support": 2
+        }
+      ],
+      "macro": {
+        "precision": 0.41666666666666663,
+        "recall": 0.625,
+        "f1": 0.49166666666666664
+      },
+      "weighted": {
+        "precision": 0.37037037037037035,
+        "recall": 0.5555555555555556,
+        "f1": 0.437037037037037
+      },
+      "confusion_matrix": {
+        "rows": [
+          "technical_support",
+          "billing",
+          "general_inquiry",
+          "account_management"
+        ],
+        "columns": [
+          "technical_support",
+          "billing",
+          "general_inquiry",
+          "account_management",
+          "invalid"
+        ],
+        "counts": [
+          [
+            2,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "name": "class_absent_from_expected",
+      "description": "account_management is never expected but is predicted (support 0).",
+      "expected": [
+        "technical_support",
+        "technical_support",
+        "billing",
+        "billing",
+        "billing",
+        "general_inquiry",
+        "general_inquiry"
+      ],
+      "predicted": [
+        "technical_support",
+        "account_management",
+        "billing",
+        "billing",
+        "account_management",
+        "general_inquiry",
+        "technical_support"
+      ],
+      "accuracy": 0.5714285714285714,
+      "invalid_count": 0,
+      "per_class": [
+        {
+          "label": "technical_support",
+          "precision": 0.5,
+          "recall": 0.5,
+          "f1": 0.5,
+          "support": 2
+        },
+        {
+          "label": "billing",
+          "precision": 1.0,
+          "recall": 0.6666666666666666,
+          "f1": 0.8,
+          "support": 3
+        },
+        {
+          "label": "general_inquiry",
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666,
+          "support": 2
+        },
+        {
+          "label": "account_management",
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      ],
+      "macro": {
+        "precision": 0.625,
+        "recall": 0.41666666666666663,
+        "f1": 0.4916666666666667
+      },
+      "weighted": {
+        "precision": 0.8571428571428571,
+        "recall": 0.5714285714285714,
+        "f1": 0.6761904761904762
+      },
+      "confusion_matrix": {
+        "rows": [
+          "technical_support",
+          "billing",
+          "general_inquiry",
+          "account_management"
+        ],
+        "columns": [
+          "technical_support",
+          "billing",
+          "general_inquiry",
+          "account_management",
+          "invalid"
+        ],
+        "counts": [
+          [
+            1,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            2,
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "name": "with_invalid_predictions",
+      "description": "Some predictions are 'invalid'; they count as wrong and never as a class.",
+      "expected": [
+        "technical_support",
+        "technical_support",
+        "billing",
+        "billing",
+        "billing",
+        "general_inquiry",
+        "general_inquiry",
+        "account_management",
+        "account_management",
+        "account_management"
+      ],
+      "predicted": [
+        "technical_support",
+        "invalid",
+        "billing",
+        "billing",
+        "invalid",
+        "general_inquiry",
+        "account_management",
+        "account_management",
+        "invalid",
+        "invalid"
+      ],
+      "accuracy": 0.5,
+      "invalid_count": 4,
+      "per_class": [
+        {
+          "label": "technical_support",
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666,
+          "support": 2
+        },
+        {
+          "label": "billing",
+          "precision": 1.0,
+          "recall": 0.6666666666666666,
+          "f1": 0.8,
+          "support": 3
+        },
+        {
+          "label": "general_inquiry",
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666,
+          "support": 2
+        },
+        {
+          "label": "account_management",
+          "precision": 0.5,
+          "recall": 0.3333333333333333,
+          "f1": 0.4,
+          "support": 3
+        }
+      ],
+      "macro": {
+        "precision": 0.875,
+        "recall": 0.49999999999999994,
+        "f1": 0.6333333333333333
+      },
+      "weighted": {
+        "precision": 0.85,
+        "recall": 0.5,
+        "f1": 0.6266666666666667
+      },
+      "confusion_matrix": {
+        "rows": [
+          "technical_support",
+          "billing",
+          "general_inquiry",
+          "account_management"
+        ],
+        "columns": [
+          "technical_support",
+          "billing",
+          "general_inquiry",
+          "account_management",
+          "invalid"
+        ],
+        "counts": [
+          [
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            2,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            2
+          ]
+        ]
+      }
+    }
+  ]
+}
