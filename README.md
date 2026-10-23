@@ -29,7 +29,34 @@ See [docs/decisions/](docs/decisions/) for architecture decision records.
 
 ## Getting started
 
-TODO: prerequisites, configuration (`.env.example`), and how to run both services.
+### Run with Docker Compose
+
+Requires Docker with Compose v2. From the repository root:
+
+```bash
+docker compose up --build
+```
+
+This starts both services:
+
+- `api` on `http://localhost:8080`
+- `classifier-service`, reachable only from the API inside the compose network
+
+The API waits until the classifier service passes its `/health` check before starting.
+
+```bash
+curl http://localhost:8080/health
+
+curl -X POST http://localhost:8080/api/classify \
+  -H "Content-Type: application/json" \
+  -d '{"text": "I was charged twice"}'
+```
+
+Stop everything with `docker compose down`.
+
+### Run locally
+
+To run each service without Docker, see [src/classifier-service/README.md](src/classifier-service/README.md) and [src/api/README.md](src/api/README.md). Configuration variables are listed in [.env.example](.env.example).
 
 ## Evaluation
 
