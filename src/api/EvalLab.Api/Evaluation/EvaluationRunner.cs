@@ -29,7 +29,8 @@ public sealed class EvaluationRunner(
     public async Task<EvaluationRun> RunAsync(EvaluationRun run, CancellationToken cancellationToken)
     {
         var path = datasetResolver.ResolvePath(run.DatasetName);
-        run = run with { Status = RunStatus.Running, StartedAt = timeProvider.GetUtcNow() };
+        // Keeps StartedAt if the caller already marked the run as running (the background processor does).
+        run = run with { Status = RunStatus.Running, StartedAt = run.StartedAt ?? timeProvider.GetUtcNow() };
 
         IReadOnlyList<LabeledExample> examples;
         try

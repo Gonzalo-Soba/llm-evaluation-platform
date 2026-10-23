@@ -1,4 +1,5 @@
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using EvalLab.Api.Classification;
 using EvalLab.Api.Datasets;
 using EvalLab.Api.Evaluation;
@@ -8,7 +9,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services
     .AddControllers()
-    .AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower);
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower;
+        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter(JsonNamingPolicy.SnakeCaseLower));
+    });
 
 builder.Services.AddProblemDetails();
 builder.Services.AddExceptionHandler<ClassifierExceptionHandler>();
@@ -68,6 +73,8 @@ builder.Services.AddSingleton(TimeProvider.System);
 builder.Services.AddSingleton<DatasetResolver>();
 builder.Services.AddSingleton<IRunStore, JsonFileRunStore>();
 builder.Services.AddTransient<EvaluationRunner>();
+builder.Services.AddSingleton<RunQueue>();
+builder.Services.AddHostedService<RunProcessor>();
 
 var app = builder.Build();
 

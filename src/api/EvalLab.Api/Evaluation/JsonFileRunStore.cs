@@ -12,7 +12,10 @@ public sealed class RunStoreOptions
     public string Directory { get; set; } = string.Empty;
 }
 
-/// <summary>Stores each run as an indented, snake_case JSON file: <c>&lt;Runs:Directory&gt;/&lt;runId&gt;.json</c>.</summary>
+/// <summary>
+/// Stores each run as an indented, snake_case JSON file: <c>&lt;Runs:Directory&gt;/&lt;runId&gt;.json</c>.
+/// Register as a singleton: file access is serialized within the process.
+/// </summary>
 public sealed class JsonFileRunStore(IOptions<RunStoreOptions> options) : IRunStore
 {
     private static readonly JsonSerializerOptions JsonOptions = new()
@@ -22,6 +25,9 @@ public sealed class JsonFileRunStore(IOptions<RunStoreOptions> options) : IRunSt
         Converters = { new JsonStringEnumConverter(JsonNamingPolicy.SnakeCaseLower) },
     };
 
+    // On Windows a file cannot be replaced while another handle reads it, so reads and writes take turns.
+    private readonly SemaphoreSlim gate = new(1, 1);
+
     private string Directory => Path.GetFullPath(options.Value.Directory);
 
     public async Task SaveAsync(EvaluationRun run, CancellationToken cancellationToken)
@@ -29,33 +35,57 @@ public sealed class JsonFileRunStore(IOptions<RunStoreOptions> options) : IRunSt
         System.IO.Directory.CreateDirectory(Directory);
         var path = PathFor(run.RunId);
 
-        // Write to a temporary file and move it, so readers never see a partially written run.
-        var tempPath = path + ".tmp";
+        // Write to a temporary file and move it, so a crash never leaves a partially written run.
+        var tempPath = $"{path}.{Guid.NewGuid():N}.tmp";
         await using (var stream = File.Create(tempPath))
         {
             await JsonSerializer.SerializeAsync(stream, run, JsonOptions, cancellationToken);
         }
 
-        File.Move(tempPath, path, overwrite: true);
+        await gate.WaitAsync(cancellationToken);
+        try
+        {
+            File.Move(tempPath, path, overwrite: true);
+        }
+        finally
+        {
+            gate.Release();
+        }
     }
 
     public async Task<EvaluationRun?> GetAsync(Guid runId, CancellationToken cancellationToken)
     {
         var path = PathFor(runId);
-        return File.Exists(path) ? await ReadAsync(path, cancellationToken) : null;
+
+        await gate.WaitAsync(cancellationToken);
+        try
+        {
+            return File.Exists(path) ? await ReadAsync(path, cancellationToken) : null;
+        }
+        finally
+        {
+            gate.Release();
+        }
     }
 
     public async Task<IReadOnlyList<EvaluationRun>> ListAsync(CancellationToken cancellationToken)
     {
-        if (!System.IO.Directory.Exists(Directory))
-        {
-            return [];
-        }
-
         var runs = new List<EvaluationRun>();
-        foreach (var path in System.IO.Directory.EnumerateFiles(Directory, "*.json"))
+
+        await gate.WaitAsync(cancellationToken);
+        try
         {
-            runs.Add(await ReadAsync(path, cancellationToken));
+            if (System.IO.Directory.Exists(Directory))
+            {
+                foreach (var path in System.IO.Directory.EnumerateFiles(Directory, "*.json"))
+                {
+                    runs.Add(await ReadAsync(path, cancellationToken));
+                }
+            }
+        }
+        finally
+        {
+            gate.Release();
         }
 
         return runs.OrderByDescending(run => run.CreatedAt).ToList();
