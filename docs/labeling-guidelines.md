@@ -43,7 +43,7 @@ The guiding principle is: **label by the primary action the support team must ta
 
 **Definition:** The customer asks for information and no fix, charge or account change is needed.
 
-- **Includes:** how a feature works, what the product can do, pricing and plans when asked as general information, opening hours, contact channels, policies, feedback and suggestions.
+- **Includes:** how a feature works, what the product can do, pricing and plans when asked as general information, opening hours, contact channels, policies, general feedback, product suggestions and feature requests.
 - **Excludes:** reports that something works incorrectly (`technical_support`). Questions about the customer's own charges or plan (`billing`). Requests that require changing the account (`account_management`).
 
 **Examples:**
@@ -80,10 +80,14 @@ A malfunction on a billing-related page is `technical_support` when the action i
 
 ### 4. How a feature works: `general_inquiry` vs `technical_support`
 
+This rule only separates `general_inquiry` from `technical_support` for product features. "How do I" questions about payment methods, invoices or the customer's plan are `billing`, because the team acts on the subscription.
+
 If the customer wants to know how to do something and nothing indicates a malfunction, label it `general_inquiry`. If they describe an expected behavior that does not happen (an error, missing results, something that "no funciona"), label it `technical_support`.
 
 - "¿Cómo programo un reporte para que se envíe cada semana?" → `general_inquiry`
 - "Programé un reporte semanal pero nunca me llega." → `technical_support`
+
+- "¿Cómo descargo las facturas de los meses anteriores?" → `billing` (outside this rule: invoices)
 
 When it is unclear whether the customer is doing something wrong or the feature is broken, prefer `technical_support` if the message describes a concrete failed attempt, and `general_inquiry` if it only asks how to do it.
 
@@ -100,10 +104,25 @@ Choose one primary request using these rules, in order:
 
 Messages labeled with this rule are usually `ambiguous`.
 
+### 6. General pricing questions → `general_inquiry`; own charges → `billing`
+
+Questions about prices, plans, currencies or invoicing options asked as general information are `general_inquiry`. This includes prospective customers who are evaluating the product. If the question is about the customer's own charges, invoices, payments or current plan, the team must check or change something on their subscription, so it is `billing`.
+
+- "¿Cuánto cuesta el plan Pro?" → `general_inquiry`
+- "¿Aceptan transferencia bancaria? Todavía no soy cliente." → `general_inquiry`
+- "¿Por qué me cobraron el precio del plan Pro si tengo el Básico?" → `billing`
+- "¿Me pueden hacer la factura de este mes en dólares?" → `billing`
+
+### 7. Password recovery email does not arrive → `account_management`
+
+If the customer cannot recover their password because the recovery email does not arrive, label it `account_management`, even though it could look like a malfunction. The action is restoring the customer's access to the account.
+
+- "Pedí recuperar la clave y el correo nunca llegó." → `account_management`
+
 ### Other cases
 
 - **Greetings, thanks and emotional tone** do not affect the category. Label the underlying request.
-- **General pricing vs. own charges:** "¿Cuánto cuesta el plan Pro?" is `general_inquiry`. "¿Por qué me cobraron el precio del plan Pro?" is `billing`.
+- **Questions about how accounts or users work** (for example, whether several people can share an account) are `general_inquiry` when no change to the customer's account is requested.
 
 ## Difficulty
 

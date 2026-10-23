@@ -1,0 +1,40 @@
+{"id": "msg-001", "text": "Quiero cambiar el correo con el que me registré porque ese ya no lo uso más.", "label": "account_management", "split": "test", "difficulty": "clear"}
+{"id": "msg-002", "text": "El buscador no encuentra nada. Pongo el nombre exacto de un cliente que sé que está cargado y me dice 'sin resultados'.", "label": "technical_support", "split": "dev", "difficulty": "clear"}
+{"id": "msg-003", "text": "Le di a pagar, la pantalla quedó girando y al final me salió un error, pero en el home banking veo que me debitaron dos veces.", "label": "billing", "split": "test", "difficulty": "ambiguous"}
+{"id": "msg-004", "text": "Me cobraron dos veces la cuota de este mes, me figura en el resumen de la tarjeta. Quiero que me devuelvan una.", "label": "billing", "split": "dev", "difficulty": "clear"}
+{"id": "msg-005", "text": "La sincronizacion con Google Calendar me duplica todos los eventos, tengo cada reunión tres veces. Lo pueden revisar?", "label": "technical_support", "split": "test", "difficulty": "clear"}
+{"id": "msg-006", "text": "Me llegó un débito de USD 49 y yo tengo el plan de 29. Qué pasó?", "label": "billing", "split": "dev", "difficulty": "clear"}
+{"id": "msg-007", "text": "Olvidé la contraseña y el mail para recuperarla no me llega, ya revisé en spam.", "label": "account_management", "split": "dev", "difficulty": "ambiguous"}
+{"id": "msg-008", "text": "No me deja entrar, me sale que la cuenta está suspendida. Creo que es porque el otro día me rechazaron la tarjeta", "label": "billing", "split": "dev", "difficulty": "ambiguous"}
+{"id": "msg-009", "text": "Cómo hago para que el reporte se mande solo todos los lunes? Busqué en la configuración y no lo encontré.", "label": "general_inquiry", "split": "dev", "difficulty": "ambiguous"}
+{"id": "msg-010", "text": "Dónde puedo leer la política de privacidad? Me la pidió mi contador", "label": "general_inquiry", "split": "test", "difficulty": "clear"}
+{"id": "msg-011", "text": "Hola! Quería saber si tienen algún descuento para ONGs 🙂", "label": "general_inquiry", "split": "dev", "difficulty": "clear"}
+{"id": "msg-012", "text": "En qué horario atienden por teléfono?", "label": "general_inquiry", "split": "test", "difficulty": "clear"}
+{"id": "msg-013", "text": "Cuánto sale el plan Pro si pago anual?", "label": "general_inquiry", "split": "test", "difficulty": "clear"}
+{"id": "msg-014", "text": "Hace 15 días pedí la devolución de la plata y todavía no la veo en la cuenta del banco.", "label": "billing", "split": "test", "difficulty": "clear"}
+{"id": "msg-015", "text": "Le doy al botón de descargar la factura y no pasa nada, probé en Chrome y en Firefox y es lo mismo", "label": "technical_support", "split": "dev", "difficulty": "ambiguous"}
+{"id": "msg-016", "text": "Me tira error 504 cada vez que intento guardar los cambios de la configuración.", "label": "technical_support", "split": "test", "difficulty": "clear"}
+{"id": "msg-017", "text": "Desde ayer la app se me queda trabada en la pantalla de carga y no pasa de ahí. Ya la desinstalé y la volví a instalar y nada.", "label": "technical_support", "split": "dev", "difficulty": "clear"}
+{"id": "msg-018", "text": "Necesito resetear la clave, no me acuerdo cuál puse. Y de paso, tienen app para tablet?", "label": "account_management", "split": "dev", "difficulty": "ambiguous"}
+{"id": "msg-019", "text": "Se puede usar la app sin conexión a internet? Viajo mucho al interior y a veces no tengo señal", "label": "general_inquiry", "split": "dev", "difficulty": "clear"}
+{"id": "msg-020", "text": "Perdí el celular y tenía la verificación en dos pasos ahí, ahora no puedo entrar de ninguna forma", "label": "account_management", "split": "dev", "difficulty": "clear"}
+{"id": "msg-021", "text": "Les quería sugerir que agreguen modo oscuro, de noche se me cansa la vista jaja", "label": "general_inquiry", "split": "test", "difficulty": "clear"}
+{"id": "msg-022", "text": "Configuré las alertas semanales como dice la guía pero nunca me llegó ninguna. Nose si estoy haciendo algo mal o q", "label": "technical_support", "split": "test", "difficulty": "ambiguous"}
+{"id": "msg-023", "text": "Quiero cancelar todo, no lo estoy usando más. Qué tengo que hacer para que no me sigan cobrando?", "label": "billing", "split": "test", "difficulty": "ambiguous"}
+{"id": "msg-024", "text": "Me voy del servicio. Quiero que borren mi perfil para siempre con todo lo que tengo cargado.", "label": "account_management", "split": "test", "difficulty": "ambiguous"}
+{"id": "msg-025", "text": "Buenas, necesito que me manden la factura de febrero a nombre de la empresa, con el RUT. Gracias", "label": "billing", "split": "test", "difficulty": "clear"}
+{"id": "msg-026", "text": "Cuando quiero iniciar sesión desde la compu me queda la pantalla en blanco. Desde el celu entro sin problema.", "label": "technical_support", "split": "dev", "difficulty": "ambiguous"}
+{"id": "msg-027", "text": "Desde la última actualización la app anda lentísima, tarda casi un minuto en abrir cada pantalla. Así no se puede trabajar!!", "label": "technical_support", "split": "test", "difficulty": "clear"}
+{"id": "msg-028", "text": "quiero que eliminen mi perfil y todos mis datos personales, no quiero que quede nada guardado de mi", "label": "account_management", "split": "test", "difficulty": "clear"}
+{"id": "msg-029", "text": "Hay forma de que varios usuarios usen la misma cuenta a la vez o cada uno necesita la suya?", "label": "general_inquiry", "split": "dev", "difficulty": "clear"}
+{"id": "msg-030", "text": "Me pueden cambiar el nombre de usuario? Lo escribí mal cuando me registré", "label": "account_management", "split": "dev", "difficulty": "clear"}
+{"id": "msg-031", "text": "hola, les escribo xq hace una semana dejaron de llegarme las notificaciones al celu. Las tengo activadas, ya me fijé", "label": "technical_support", "split": "dev", "difficulty": "clear"}
+{"id": "msg-032", "text": "Una ex empleada todavía puede entrar al sistema con su mail. Necesito sacarle el acceso urgente.", "label": "account_management", "split": "test", "difficulty": "clear"}
+{"id": "msg-033", "text": "Cuando exporto el reporte a PDF las tablas salen cortadas a la mitad. Antes andaba perfecto, q cambiaron?", "label": "technical_support", "split": "test", "difficulty": "clear"}
+{"id": "msg-034", "text": "Me bloquearon por poner mal la clave varias veces. Me la pueden desbloquear porfa?", "label": "account_management", "split": "test", "difficulty": "clear"}
+{"id": "msg-035", "text": "quiero bajar al plan basico, el pro me queda grande para lo q lo uso", "label": "billing", "split": "test", "difficulty": "clear"}
+{"id": "msg-036", "text": "Necesito que le den permisos de administrador a mi socio. Yo no tengo la opción para cambiárselos.", "label": "account_management", "split": "dev", "difficulty": "clear"}
+{"id": "msg-037", "text": "Tienen integración con Mercado Libre o está en los planes?", "label": "general_inquiry", "split": "dev", "difficulty": "clear"}
+{"id": "msg-038", "text": "Como hago para cambiar la tarjeta con la que pago? La que tengo se vence el mes que viene.", "label": "billing", "split": "dev", "difficulty": "clear"}
+{"id": "msg-039", "text": "La factura la pueden hacer en dólares? Estoy evaluando contratar el plan para mi empresa.", "label": "general_inquiry", "split": "test", "difficulty": "ambiguous"}
+{"id": "msg-040", "text": "Che, me siguen debitando todos los meses y yo di de baja el servicio en diciembre. Es la tercera vez que escribo.", "label": "billing", "split": "dev", "difficulty": "clear"}
