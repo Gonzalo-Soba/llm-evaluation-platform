@@ -15,6 +15,7 @@ COPY pyproject.toml uv.lock ./
 RUN uv sync --locked --no-dev --no-install-project
 
 COPY app ./app
+COPY prompts ./prompts
 
 RUN useradd --uid 10001 --no-create-home --shell /usr/sbin/nologin appuser
 USER appuser
