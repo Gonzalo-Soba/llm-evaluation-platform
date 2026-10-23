@@ -1,0 +1,6 @@
+{"id": "ex-1", "text": "La app se cierra al abrirla", "label": "technical_support", "split": "dev", "difficulty": "clear"}
+not json
+{"id": "ex-3", "label": "billing", "split": "dev", "difficulty": "clear"}
+{"id": "ex-4", "text": "Quiero comprar", "label": "sales", "split": "train", "difficulty": "clear"}
+{"id": "ex-1", "text": "Otra vez se cierra", "label": "technical_support", "split": "test", "difficulty": "hard"}
+{"id": "ex-6", "text": "Olvidé la clave", "label": "account_management", "split": "test", "difficulty": "clear"}
