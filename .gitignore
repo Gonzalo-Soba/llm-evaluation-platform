@@ -430,3 +430,35 @@ FodyWeavers.xsd
 # Claude Code
 CLAUDE.md
 .claude/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# uv
+.uv-cache/
+.uv/
+
+# Environment files (keep the template)
+.env
+.env.*
+!.env.example
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Evaluation run outputs
+runs/
