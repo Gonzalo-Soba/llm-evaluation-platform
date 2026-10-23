@@ -30,6 +30,15 @@ curl -X POST http://localhost:8000/classify \
 
 Interactive API docs are available at `http://localhost:8000/docs`.
 
+## Docker
+
+```bash
+docker build -t classifier-service:dev .
+docker run --rm -p 8000:8000 classifier-service:dev
+```
+
+The image is based on `python:3.12-slim`. It installs dependencies with uv from `uv.lock`, without dev dependencies, and runs uvicorn on port 8000 as a non-root user.
+
 ## Test
 
 ```bash
