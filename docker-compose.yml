@@ -8,6 +8,8 @@ services:
       CLASSIFIER_SERVICE_URL: http://classifier-service:8000
       Datasets__Directory: /data
       Runs__Directory: /runs
+      # Kept low to stay within LLM provider rate limits.
+      Evaluation__MaxParallelism: "1"
     volumes:
       - ./data:/data:ro
       - ./runs:/runs

@@ -1,0 +1,367 @@
+{
+  "run_id": "e67c45be-d481-477d-9560-1fd946137100",
+  "status": "completed",
+  "created_at": "2026-10-23T18:17:25.9537531+00:00",
+  "started_at": "2026-10-23T18:17:25.9776573+00:00",
+  "completed_at": "2026-10-23T18:18:37.2761566+00:00",
+  "dataset_name": "support-messages-v0",
+  "dataset_sha256": "2ded4ddcf860187f7e1fe5117a44182902027ab73b7383f9953f9218c8059619",
+  "split": "test",
+  "classifier_config": {
+    "provider": "openai_compatible",
+    "model": "openai/gpt-oss-120b",
+    "prompt_version": "v2",
+    "temperature": 0
+  },
+  "predictions": [
+    {
+      "example_id": "msg-001",
+      "text": "Quiero cambiar el correo con el que me registr\u00E9 porque ese ya no lo uso m\u00E1s.",
+      "expected": "account_management",
+      "predicted": "account_management",
+      "status": "ok",
+      "raw_output": "{\u0022category\u0022:\u0022account_management\u0022}",
+      "classifier_latency_ms": 486,
+      "end_to_end_latency_ms": 501,
+      "input_tokens": 1040,
+      "output_tokens": 81,
+      "error_message": null
+    },
+    {
+      "example_id": "msg-003",
+      "text": "Le di a pagar, la pantalla qued\u00F3 girando y al final me sali\u00F3 un error, pero en el home banking veo que me debitaron dos veces.",
+      "expected": "billing",
+      "predicted": "billing",
+      "status": "ok",
+      "raw_output": "{\u0022category\u0022:\u0022billing\u0022}",
+      "classifier_latency_ms": 1123,
+      "end_to_end_latency_ms": 1135,
+      "input_tokens": 1053,
+      "output_tokens": 184,
+      "error_message": null
+    },
+    {
+      "example_id": "msg-005",
+      "text": "La sincronizacion con Google Calendar me duplica todos los eventos, tengo cada reuni\u00F3n tres veces. Lo pueden revisar?",
+      "expected": "technical_support",
+      "predicted": "technical_support",
+      "status": "ok",
+      "raw_output": "{\u0022category\u0022:\u0022technical_support\u0022}",
+      "classifier_latency_ms": 551,
+      "end_to_end_latency_ms": 568,
+      "input_tokens": 1044,
+      "output_tokens": 65,
+      "error_message": null
+    },
+    {
+      "example_id": "msg-010",
+      "text": "D\u00F3nde puedo leer la pol\u00EDtica de privacidad? Me la pidi\u00F3 mi contador",
+      "expected": "general_inquiry",
+      "predicted": "general_inquiry",
+      "status": "ok",
+      "raw_output": "{\u0022category\u0022:\u0022general_inquiry\u0022}",
+      "classifier_latency_ms": 2836,
+      "end_to_end_latency_ms": 2854,
+      "input_tokens": 1034,
+      "output_tokens": 103,
+      "error_message": null
+    },
+    {
+      "example_id": "msg-012",
+      "text": "En qu\u00E9 horario atienden por tel\u00E9fono?",
+      "expected": "general_inquiry",
+      "predicted": "general_inquiry",
+      "status": "ok",
+      "raw_output": "{\u0022category\u0022:\u0022general_inquiry\u0022}",
+      "classifier_latency_ms": 2698,
+      "end_to_end_latency_ms": 2709,
+      "input_tokens": 1029,
+      "output_tokens": 72,
+      "error_message": null
+    },
+    {
+      "example_id": "msg-013",
+      "text": "Cu\u00E1nto sale el plan Pro si pago anual?",
+      "expected": "general_inquiry",
+      "predicted": "general_inquiry",
+      "status": "ok",
+      "raw_output": "{\u0022category\u0022:\u0022general_inquiry\u0022}",
+      "classifier_latency_ms": 8534,
+      "end_to_end_latency_ms": 8545,
+      "input_tokens": 1031,
+      "output_tokens": 90,
+      "error_message": null
+    },
+    {
+      "example_id": "msg-014",
+      "text": "Hace 15 d\u00EDas ped\u00ED la devoluci\u00F3n de la plata y todav\u00EDa no la veo en la cuenta del banco.",
+      "expected": "billing",
+      "predicted": "billing",
+      "status": "ok",
+      "raw_output": "{\u0022category\u0022:\u0022billing\u0022}",
+      "classifier_latency_ms": 2909,
+      "end_to_end_latency_ms": 2928,
+      "input_tokens": 1043,
+      "output_tokens": 101,
+      "error_message": null
+    },
+    {
+      "example_id": "msg-016",
+      "text": "Me tira error 504 cada vez que intento guardar los cambios de la configuraci\u00F3n.",
+      "expected": "technical_support",
+      "predicted": "technical_support",
+      "status": "ok",
+      "raw_output": "{\u0022category\u0022:\u0022technical_support\u0022}",
+      "classifier_latency_ms": 1772,
+      "end_to_end_latency_ms": 1782,
+      "input_tokens": 1037,
+      "output_tokens": 75,
+      "error_message": null
+    },
+    {
+      "example_id": "msg-021",
+      "text": "Les quer\u00EDa sugerir que agreguen modo oscuro, de noche se me cansa la vista jaja",
+      "expected": "general_inquiry",
+      "predicted": "general_inquiry",
+      "status": "ok",
+      "raw_output": "{\u0022category\u0022:\u0022general_inquiry\u0022}",
+      "classifier_latency_ms": 2652,
+      "end_to_end_latency_ms": 2665,
+      "input_tokens": 1041,
+      "output_tokens": 69,
+      "error_message": null
+    },
+    {
+      "example_id": "msg-022",
+      "text": "Configur\u00E9 las alertas semanales como dice la gu\u00EDa pero nunca me lleg\u00F3 ninguna. Nose si estoy haciendo algo mal o q",
+      "expected": "technical_support",
+      "predicted": "technical_support",
+      "status": "ok",
+      "raw_output": "{\u0022category\u0022:\u0022technical_support\u0022}",
+      "classifier_latency_ms": 2733,
+      "end_to_end_latency_ms": 2749,
+      "input_tokens": 1046,
+      "output_tokens": 122,
+      "error_message": null
+    },
+    {
+      "example_id": "msg-023",
+      "text": "Quiero cancelar todo, no lo estoy usando m\u00E1s. Qu\u00E9 tengo que hacer para que no me sigan cobrando?",
+      "expected": "billing",
+      "predicted": "billing",
+      "status": "ok",
+      "raw_output": "{\u0022category\u0022:\u0022billing\u0022}",
+      "classifier_latency_ms": 2622,
+      "end_to_end_latency_ms": 2632,
+      "input_tokens": 1045,
+      "output_tokens": 87,
+      "error_message": null
+    },
+    {
+      "example_id": "msg-024",
+      "text": "Me voy del servicio. Quiero que borren mi perfil para siempre con todo lo que tengo cargado.",
+      "expected": "account_management",
+      "predicted": "account_management",
+      "status": "ok",
+      "raw_output": "{\u0022category\u0022:\u0022account_management\u0022}",
+      "classifier_latency_ms": 8700,
+      "end_to_end_latency_ms": 8710,
+      "input_tokens": 1043,
+      "output_tokens": 72,
+      "error_message": null
+    },
+    {
+      "example_id": "msg-025",
+      "text": "Buenas, necesito que me manden la factura de febrero a nombre de la empresa, con el RUT. Gracias",
+      "expected": "billing",
+      "predicted": "billing",
+      "status": "ok",
+      "raw_output": "{\u0022category\u0022:\u0022billing\u0022}",
+      "classifier_latency_ms": 2891,
+      "end_to_end_latency_ms": 2901,
+      "input_tokens": 1044,
+      "output_tokens": 108,
+      "error_message": null
+    },
+    {
+      "example_id": "msg-027",
+      "text": "Desde la \u00FAltima actualizaci\u00F3n la app anda lent\u00EDsima, tarda casi un minuto en abrir cada pantalla. As\u00ED no se puede trabajar!!",
+      "expected": "technical_support",
+      "predicted": "technical_support",
+      "status": "ok",
+      "raw_output": "{\u0022category\u0022:\u0022technical_support\u0022}",
+      "classifier_latency_ms": 4715,
+      "end_to_end_latency_ms": 4727,
+      "input_tokens": 1046,
+      "output_tokens": 98,
+      "error_message": null
+    },
+    {
+      "example_id": "msg-028",
+      "text": "quiero que eliminen mi perfil y todos mis datos personales, no quiero que quede nada guardado de mi",
+      "expected": "account_management",
+      "predicted": "account_management",
+      "status": "ok",
+      "raw_output": "{\u0022category\u0022:\u0022account_management\u0022}",
+      "classifier_latency_ms": 4911,
+      "end_to_end_latency_ms": 4927,
+      "input_tokens": 1043,
+      "output_tokens": 93,
+      "error_message": null
+    },
+    {
+      "example_id": "msg-032",
+      "text": "Una ex empleada todav\u00EDa puede entrar al sistema con su mail. Necesito sacarle el acceso urgente.",
+      "expected": "account_management",
+      "predicted": "account_management",
+      "status": "ok",
+      "raw_output": "{\u0022category\u0022:\u0022account_management\u0022}",
+      "classifier_latency_ms": 5684,
+      "end_to_end_latency_ms": 5707,
+      "input_tokens": 1042,
+      "output_tokens": 91,
+      "error_message": null
+    },
+    {
+      "example_id": "msg-033",
+      "text": "Cuando exporto el reporte a PDF las tablas salen cortadas a la mitad. Antes andaba perfecto, q cambiaron?",
+      "expected": "technical_support",
+      "predicted": "technical_support",
+      "status": "ok",
+      "raw_output": "{\u0022category\u0022:\u0022technical_support\u0022}",
+      "classifier_latency_ms": 1888,
+      "end_to_end_latency_ms": 1920,
+      "input_tokens": 1046,
+      "output_tokens": 70,
+      "error_message": null
+    },
+    {
+      "example_id": "msg-034",
+      "text": "Me bloquearon por poner mal la clave varias veces. Me la pueden desbloquear porfa?",
+      "expected": "account_management",
+      "predicted": "account_management",
+      "status": "ok",
+      "raw_output": "{\u0022category\u0022:\u0022account_management\u0022}",
+      "classifier_latency_ms": 2698,
+      "end_to_end_latency_ms": 2708,
+      "input_tokens": 1040,
+      "output_tokens": 96,
+      "error_message": null
+    },
+    {
+      "example_id": "msg-035",
+      "text": "quiero bajar al plan basico, el pro me queda grande para lo q lo uso",
+      "expected": "billing",
+      "predicted": "billing",
+      "status": "ok",
+      "raw_output": "{\u0022category\u0022:\u0022billing\u0022}",
+      "classifier_latency_ms": 2657,
+      "end_to_end_latency_ms": 2668,
+      "input_tokens": 1039,
+      "output_tokens": 91,
+      "error_message": null
+    },
+    {
+      "example_id": "msg-039",
+      "text": "La factura la pueden hacer en d\u00F3lares? Estoy evaluando contratar el plan para mi empresa.",
+      "expected": "general_inquiry",
+      "predicted": "billing",
+      "status": "ok",
+      "raw_output": "{\u0022category\u0022:\u0022billing\u0022}",
+      "classifier_latency_ms": 7920,
+      "end_to_end_latency_ms": 7935,
+      "input_tokens": 1039,
+      "output_tokens": 171,
+      "error_message": null
+    }
+  ],
+  "metrics": {
+    "accuracy": 0.95,
+    "invalid_count": 0,
+    "per_class": [
+      {
+        "label": "technical_support",
+        "precision": 1,
+        "recall": 1,
+        "f1": 1,
+        "support": 5
+      },
+      {
+        "label": "billing",
+        "precision": 0.8333333333333334,
+        "recall": 1,
+        "f1": 0.9090909090909091,
+        "support": 5
+      },
+      {
+        "label": "general_inquiry",
+        "precision": 1,
+        "recall": 0.8,
+        "f1": 0.888888888888889,
+        "support": 5
+      },
+      {
+        "label": "account_management",
+        "precision": 1,
+        "recall": 1,
+        "f1": 1,
+        "support": 5
+      }
+    ],
+    "macro_precision": 0.9583333333333334,
+    "macro_recall": 0.95,
+    "macro_f1": 0.9494949494949495,
+    "weighted_precision": 0.9583333333333334,
+    "weighted_recall": 0.95,
+    "weighted_f1": 0.9494949494949495,
+    "confusion_matrix": {
+      "rows": [
+        "technical_support",
+        "billing",
+        "general_inquiry",
+        "account_management"
+      ],
+      "columns": [
+        "technical_support",
+        "billing",
+        "general_inquiry",
+        "account_management",
+        "invalid"
+      ],
+      "counts": [
+        [
+          5,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          5,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          4,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          5,
+          0
+        ]
+      ]
+    }
+  },
+  "error_count": 0,
+  "total_input_tokens": 20825,
+  "total_output_tokens": 1939,
+  "failure_reason": null
+}

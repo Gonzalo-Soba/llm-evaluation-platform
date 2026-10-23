@@ -2,6 +2,27 @@
 
 Development scripts. They are self-contained [uv scripts](https://docs.astral.sh/uv/guides/scripts/): dependencies are declared inline (PEP 723), and uv installs them in an isolated environment on each run. No virtual environment or manual install is needed.
 
+## summarize_runs.py
+
+Prints a markdown summary of the evaluation runs in `docs/results/*.json`. It has no dependencies.
+
+The summary has one row per run, with these columns:
+- config and split
+- accuracy and macro F1
+- invalid and error counts
+- total tokens
+- mean end-to-end latency
+- accuracy on `clear` vs. `ambiguous` examples. Difficulty is joined from the dataset file by example id. The script warns if the dataset's SHA-256 no longer matches the run.
+
+```bash
+uv run scripts/summarize_runs.py
+
+# Per-class metrics, confusion matrix and misclassified examples for one run
+uv run scripts/summarize_runs.py --details docs/results/test-v1-gpt-oss-120b.json
+```
+
+To add a run, copy its file from `runs/` to `docs/results/` with a descriptive name, for example `test-v2-gpt-oss-120b.json`.
+
 ## generate_metrics_fixtures.py
 
 Generates the reference values for the .NET `MetricsCalculator` tests, using scikit-learn as the reference implementation.
