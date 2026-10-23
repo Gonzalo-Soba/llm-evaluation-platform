@@ -11,64 +11,84 @@ public static class MetricsCalculator
 
     /// <param name="pairs">Expected and predicted label for each example.</param>
     /// <param name="labels">The label set, in the order used for per-class metrics and the confusion matrix.</param>
+    /// <exception cref="ArgumentNullException"><paramref name="pairs"/> or <paramref name="labels"/> is null.</exception>
     /// <exception cref="ArgumentException">
-    /// <paramref name="pairs"/> is empty, or an expected label is not in <paramref name="labels"/>.
+    /// <paramref name="pairs"/> is empty;
+    /// <paramref name="labels"/> contains a duplicated label or <see cref="InvalidLabel"/>;
+    /// an expected label is not in <paramref name="labels"/>;
+    /// or a predicted label is neither in <paramref name="labels"/> nor <see cref="InvalidLabel"/>.
     /// </exception>
     public static EvaluationMetrics Calculate(
-    IReadOnlyList<(string Expected, string Predicted)> pairs,
-    IReadOnlyList<string> labels)
+        IReadOnlyList<(string Expected, string Predicted)> pairs,
+        IReadOnlyList<string> labels)
     {
-        // 1. Tiene que haber al menos un par
-        if (pairs.Count == 0)
-            throw new ArgumentException("At least one prediction is required.", nameof(pairs));
+        ArgumentNullException.ThrowIfNull(pairs);
+        ArgumentNullException.ThrowIfNull(labels);
 
-        // Un HashSet permite preguntar "¿esta etiqueta existe?" de forma rápida
+        if (pairs.Count == 0)
+        {
+            throw new ArgumentException("At least one prediction is required.", nameof(pairs));
+        }
+
+        var n = labels.Count;
         var labelSet = new HashSet<string>(labels);
+
+        // A duplicated label would map two rows to the same column and silently corrupt the metrics.
+        if (labelSet.Count != n)
+        {
+            throw new ArgumentException("Labels must be unique.", nameof(labels));
+        }
+
+        // "invalid" is reserved for the extra confusion matrix column; it can never be a class.
+        if (labelSet.Contains(InvalidLabel))
+        {
+            throw new ArgumentException($"Labels must not contain '{InvalidLabel}'.", nameof(labels));
+        }
 
         for (var i = 0; i < pairs.Count; i++)
         {
-            // Separa el par en dos variables
             var (expected, predicted) = pairs[i];
 
-            // 2. La etiqueta correcta tiene que ser una categoría
             if (!labelSet.Contains(expected))
+            {
                 throw new ArgumentException(
                     $"Pair {i}: expected label '{expected}' is not a known label.", nameof(pairs));
+            }
 
-            // 3. La predicción tiene que ser una categoría o "invalid"
             if (!labelSet.Contains(predicted) && predicted != InvalidLabel)
+            {
                 throw new ArgumentException(
                     $"Pair {i}: predicted label '{predicted}' is neither a known label nor '{InvalidLabel}'.", nameof(pairs));
+            }
         }
 
-        // Las columnas son las categorías más "invalid", en ese orden
         var columns = labels.Append(InvalidLabel).ToList();
 
-        // Diccionario para saber en qué posición está cada etiqueta
-        var index = new Dictionary<string, int>();
+        var columnIndex = new Dictionary<string, int>();
         for (var c = 0; c < columns.Count; c++)
-            index[columns[c]] = c;
+        {
+            columnIndex[columns[c]] = c;
+        }
 
-        // La matriz: una fila por categoría, una columna por categoría + "invalid"
-        var counts = new int[labels.Count, columns.Count];
+        // Rows are expected labels, so they share the first n column indexes.
+        var counts = new int[n, columns.Count];
 
-        // Por cada par, sumamos 1 en la celda [esperado, predicho]
         foreach (var (expected, predicted) in pairs)
         {
-            var row = index[expected];
-            var col = index[predicted];
+            var row = columnIndex[expected];
+            var col = columnIndex[predicted];
             counts[row, col]++;
         }
 
-        // Punto 3: accuracy = aciertos (la diagonal) / total
+        // "invalid" predictions are off the diagonal, so they count as wrong.
         var correct = 0;
-        for (var i = 0; i < labels.Count; i++)
+        for (var i = 0; i < n; i++)
+        {
             correct += counts[i, i];
+        }
 
         var accuracy = (double)correct / pairs.Count;
 
-        // Punto 4: métricas por clase, guardadas en arrays (una posición por categoría)
-        var n = labels.Count;
         var precision = new double[n];
         var recall = new double[n];
         var f1 = new double[n];
@@ -78,16 +98,20 @@ public static class MetricsCalculator
         {
             var tp = counts[i, i];
 
-            // Cuántos se predijeron como clase i: suma de la COLUMNA i
             var predictedAsI = 0;
             for (var r = 0; r < n; r++)
+            {
                 predictedAsI += counts[r, i];
+            }
 
-            // Cuántos eran realmente clase i: suma de la FILA i, incluida la columna "invalid"
+            // Includes the "invalid" column: an invalid prediction is a false negative for the expected class.
             var actuallyI = 0;
             for (var c = 0; c < columns.Count; c++)
+            {
                 actuallyI += counts[i, c];
+            }
 
+            // Undefined ratios are 0, matching scikit-learn's zero_division=0.
             support[i] = actuallyI;
             precision[i] = predictedAsI == 0 ? 0 : (double)tp / predictedAsI;
             recall[i] = actuallyI == 0 ? 0 : (double)tp / actuallyI;
@@ -96,12 +120,11 @@ public static class MetricsCalculator
                 : 2 * precision[i] * recall[i] / (precision[i] + recall[i]);
         }
 
-        // Punto 5: macro = promedio simple de las clases (todas pesan igual)
+        // Labels with support 0 are included, as scikit-learn does when the label set is given explicitly.
         var macroPrecision = precision.Average();
         var macroRecall = recall.Average();
         var macroF1 = f1.Average();
 
-        // Punto 6: weighted = promedio ponderado por support (las clases con más ejemplos pesan más)
         double weightedPrecision = 0, weightedRecall = 0, weightedF1 = 0;
         for (var i = 0; i < n; i++)
         {
@@ -109,15 +132,18 @@ public static class MetricsCalculator
             weightedRecall += recall[i] * support[i];
             weightedF1 += f1[i] * support[i];
         }
-        weightedPrecision /= pairs.Count;
-        weightedRecall /= pairs.Count;
-        weightedF1 /= pairs.Count;
 
-        // Punto 7: cuántas predicciones fueron "invalid" = suma de la última columna
+        var totalSupport = support.Sum();
+        weightedPrecision /= totalSupport;
+        weightedRecall /= totalSupport;
+        weightedF1 /= totalSupport;
+
         var invalidColumn = columns.Count - 1;
         var invalidCount = 0;
         for (var r = 0; r < n; r++)
+        {
             invalidCount += counts[r, invalidColumn];
+        }
 
         var perClass = labels
             .Select((label, i) => new ClassMetrics(label, precision[i], recall[i], f1[i], support[i]))
